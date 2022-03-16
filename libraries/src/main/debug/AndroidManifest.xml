@@ -1,0 +1,33 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="me.shouheng.libraries">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:name=".ModuleLibraryApp"
+        android:theme="@style/AppTheme" >
+        <activity android:name=".MenuActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".eventbus.EventBusActivity1"/>
+        <activity android:name=".eventbus.EventBusActivity2"/>
+        <activity android:name=".rxjava.RxJavaActivity"/>
+        <activity android:name=".rxjava.RxBusActivity"/>
+        <activity android:name=".image.ClipPictureActivity"/>
+        <activity android:name=".MyKnifeActivity"/>
+        <activity android:name=".FingerprintIdentifyActivity"/>
+        <activity android:name=".workmanager.WorkManagerActivity"/>
+        <activity android:name=".serial.SerializeActivity"/>
+        <activity android:name=".handler.HandlerActivity"/>
+        <service android:name=".handler.FileRecognizeTask"/>
+        <activity android:name=".image.ImageCompressActivity"/>
+    </application>
+
+</manifest>

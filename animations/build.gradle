@@ -1,0 +1,68 @@
+println isAnimationsModuleApp.toBoolean()
+
+if (isAnimationsModuleApp.toBoolean()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    // use data binding
+    dataBinding {
+        enabled = true
+    }
+    // use java 8 language
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    // use external libs folder
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+            if (isAnimationsModuleApp.toBoolean()) {
+                manifest.srcFile "src/main/debug/AndroidManifest.xml"
+            } else {
+                manifest.srcFile "src/main/AndroidManifest.xml"
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+    // router
+    annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
+    // CircularReveal
+    implementation ('com.github.ozodrukh:CircularReveal:2.0.1@aar') {
+        transitive = true
+    }
+    // target view
+    implementation 'com.getkeepsafe.taptargetview:taptargetview:1.12.0'
+    // ripple
+    implementation 'com.balysv:material-ripple:1.0.2'
+    // projects
+    implementation project(':commons')
+}

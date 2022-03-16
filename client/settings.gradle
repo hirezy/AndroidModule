@@ -1,0 +1,12 @@
+include ':app', ':commons', ':guokr', ':live', ':layout', ':libraries', ':eyepetizer', ':knife-annotation',  ':knife-api', ':knife-compiler', ':animations', ':advanced'
+project(':commons').projectDir = new File('../commons')
+project(':guokr').projectDir = new File('../guokr')
+project(':live').projectDir = new File('../live')
+project(':layout').projectDir = new File('../layout')
+project(':libraries').projectDir = new File('../libraries')
+project(':eyepetizer').projectDir = new File('../eyepetizer')
+project(':knife-annotation').projectDir = new File('../knife-annotation')
+project(':knife-api').projectDir = new File('../knife-api')
+project(':knife-compiler').projectDir = new File('../knife-compiler')
+project(':animations').projectDir = new File('../animations')
+project(':advanced').projectDir = new File('../advanced')

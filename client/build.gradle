@@ -1,0 +1,69 @@
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://maven.fabric.io/public' }
+        maven { url 'https://dl.bintray.com/umsdk/release' }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath 'io.fabric.tools:gradle:1.25.4'
+        classpath 'com.meituan.android.walle:plugin:1.1.6'
+        classpath 'com.tencent.mm:AndResGuard-gradle-plugin:1.2.13'
+        classpath "net.rdrei.android.buildtimetracker:gradle-plugin:0.11.1"
+        classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.8.4'
+    }
+}
+
+plugins {
+    id "net.rdrei.android.buildtimetracker" version "0.11.0"
+}
+
+buildtimetracker {
+    reporters {
+        csv {
+            output "build/times.csv"
+            append true
+            header false
+        }
+        summary {
+            ordered false
+            threshold 50
+            barstyle "unicode"
+        }
+        csvSummary {
+            csv "build/times.csv"
+        }
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+        maven { url "https://maven.google.com/"}
+        maven { url 'https://maven.fabric.io/public' }
+        maven { url 'https://dl.bintray.com/umsdk/release' }
+    }
+}
+
+ext {
+    compileSdkVersion = 28
+    buildToolsVersion = '28.0.2'
+    targetSdkVersion = compileSdkVersion
+    minSdkVersion = 17
+
+    androidX = '1.0.0'
+    constraintLayout = '2.0.0-alpha2'
+
+    rxJava = '2.2.0'
+    rxAndroid = '2.0.2'
+
+    dagger = '2.15'
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

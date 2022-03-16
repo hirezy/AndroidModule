@@ -1,0 +1,116 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [ moduleName : project.getName() ]
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    // use data binding
+    dataBinding {
+        enabled = true
+    }
+    // use java 8 language
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    // use external libs folder
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+    // support
+    api "androidx.recyclerview:recyclerview:${androidX}"
+    api "androidx.palette:palette:${androidX}"
+    api "androidx.cardview:cardview:${androidX}"
+    api "androidx.appcompat:appcompat:1.0.2"
+    api "androidx.recyclerview:recyclerview:${androidX}"
+    api "androidx.annotation:annotation:${androidX}"
+    api "androidx.legacy:legacy-support-v4:${androidX}"
+    api "androidx.constraintlayout:constraintlayout:${constraintLayout}"
+    api 'com.google.android.material:material:1.1.0-alpha01'
+    // architecture
+    api 'androidx.lifecycle:lifecycle-runtime:2.0.0'
+    api 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.0.0'
+    // leakcanary
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.2'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.1'
+    // multidex
+    api 'androidx.multidex:multidex:2.0.0'
+    // time
+    api 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
+    api 'joda-time:joda-time:2.9.9'
+    // io
+    api 'commons-io:commons-io:2.6'
+    // image compress
+    api 'top.zibin:Luban:1.1.3'
+    // recycler
+    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.43-alpha1'
+    api 'com.yanzhenjie:recyclerview-swipe:1.1.4'
+    api 'com.timehop.stickyheadersrecyclerview:library:0.4.3@aar'
+    // glide
+    api 'com.github.bumptech.glide:glide:4.8.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+    api ('com.github.bumptech.glide:okhttp3-integration:4.8.0') {
+        transitive = false
+    }
+    // debug tools
+    implementation 'com.facebook.stetho:stetho:1.5.0'
+    // fabric
+    api('com.crashlytics.sdk.android:crashlytics:2.9.2@aar') {
+        transitive = true
+    }
+    // dagger
+    api "com.google.dagger:dagger:$dagger"
+    api "com.google.dagger:dagger-android:$dagger"
+    api "com.google.dagger:dagger-android-support:$dagger"
+    annotationProcessor "com.google.dagger:dagger-compiler:$dagger"
+    annotationProcessor "com.google.dagger:dagger-android-processor:$dagger"
+    // retrofit
+    api 'com.squareup.retrofit2:retrofit:2.4.0'
+    api 'com.squareup.retrofit2:converter-gson:2.4.0'
+    api 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    // rx-java
+    api "io.reactivex.rxjava2:rxjava:$rxJava"
+    api "io.reactivex.rxjava2:rxandroid:$rxAndroid"
+    // router
+    api 'com.alibaba:arouter-api:1.3.1'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
+    // walle
+    api 'com.meituan.android.walle:library:1.1.6'
+    // umeng
+    api  'com.umeng.umsdk:common:1.5.4'
+    api  'com.umeng.umsdk:analytics:7.5.4'
+    // PushSDK必须依赖utdid库，所以需要加入对应依赖
+    api 'com.umeng.umsdk:utdid:1.1.5.3'
+    // PushSDK
+    api 'com.umeng.umsdk:push:5.0.2'
+    // player
+    api files('libs/pldroid-player-1.5.0.jar')
+    // timer
+    api 'com.jakewharton.timber:timber:4.7.1'
+}

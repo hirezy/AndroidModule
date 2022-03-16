@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FAFAFA</color>
+    <color name="colorPrimaryDark">#FAFAFA</color>
+    <color name="colorAccent">#0078FF</color>
+
+    <color name="dark_theme_background">#2E2E2E</color>
+    <color name="dark_theme_foreground">#3F3F3F</color>
+
+    <color name="light_theme_background">#FAFAFA</color>
+
+    <color name="intro_color_1">#222222</color>
+    <color name="intro_color_2">#c52829</color>
+    <color name="intro_color_3">#f77910</color>
+    <color name="intro_color_4">#21dba4</color>
+    <color name="intro_color_5">#9C27B0</color>
+
+    <color name="colorNavItemUnselected">#757575</color>
+    <color name="colorNavItemSelected">@color/colorAccent</color>
+</resources>
